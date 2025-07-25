@@ -92,12 +92,16 @@ syntax keyword shaderlabPassBlockName nextgroup=shaderlabTagsBlock skipwhite ski
 syntax keyword shaderlabPassBlockName nextgroup=shaderlabPackageRequirementsBlock skipwhite skipempty PackageRequirements
 
 " Program Block Names
+syntax include @CG syntax/cg.vim
+unlet b:current_syntax
 syntax include @HLSL syntax/hlsl.vim
+unlet b:current_syntax
+
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLPROGRAM/ end=/ENDHLSL/
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLINCLUDE/ end=/ENDHLSL/
-syntax include @CG syntax/cg.vim
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGPROGRAM/ end=/ENDCG/
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGINCLUDE/ end=/ENDCG/
+
 
 " Properties block
 "" Types
