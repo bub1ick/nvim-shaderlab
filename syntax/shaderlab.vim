@@ -23,6 +23,9 @@ syntax match shaderlabProperty /\v\_[A-Za-z0-9_]+/
 syntax match shaderlabComment "//.*"
 syntax region shaderlabComment start="\/\*" end="\*\/"
 
+" Blocks
+syntax region shaderlabBlock start=/{/ end=/}/ transparent fold
+
 " Shader Commands
 syntax keyword shaderlabCommand AlphaMask
 syntax keyword shaderlabCommand Blend
@@ -97,10 +100,10 @@ unlet b:current_syntax
 syntax include @HLSL syntax/hlsl.vim
 unlet b:current_syntax
 
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLPROGRAM/ end=/ENDHLSL/
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLINCLUDE/ end=/ENDHLSL/
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGPROGRAM/ end=/ENDCG/
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGINCLUDE/ end=/ENDCG/
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLPROGRAM/ end=/ENDHLSL/ fold transparent
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLINCLUDE/ end=/ENDHLSL/ fold transparent
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGPROGRAM/ end=/ENDCG/ fold transparent
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGINCLUDE/ end=/ENDCG/ fold transparent
 
 
 " Properties block
