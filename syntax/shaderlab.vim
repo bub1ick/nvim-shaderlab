@@ -95,8 +95,9 @@ syntax keyword shaderlabPassBlockName nextgroup=shaderlabPackageRequirementsBloc
 syntax include @HLSL syntax/hlsl.vim
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLPROGRAM/ end=/ENDHLSL/
 syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/HLSLINCLUDE/ end=/ENDHLSL/
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/CGPROGRAM/ end=/ENDCG/
-syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@HLSL start=/CGINCLUDE/ end=/ENDCG/
+syntax include @CG syntax/cg.vim
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGPROGRAM/ end=/ENDCG/
+syntax region shaderlabProgram matchgroup=shaderlabProgramBoundaries keepend contains=@CG start=/CGINCLUDE/ end=/ENDCG/
 
 " Properties block
 "" Types
